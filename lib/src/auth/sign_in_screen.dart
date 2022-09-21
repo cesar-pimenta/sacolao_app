@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:sacolao_app/src/auth/components/custom_text_field.dart';
+import 'package:sacolao_app/src/auth/sign_up_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -139,7 +140,12 @@ class SignInScreen extends StatelessWidget {
                               width: 2,
                               color: Colors.red,
                             )),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (c) {
+                            return SignUpScreen();
+                          }));
+                        },
                         child: const Text(
                           'Criar conta',
                           style: TextStyle(fontSize: 18),
