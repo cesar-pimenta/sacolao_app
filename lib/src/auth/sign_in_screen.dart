@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:sacolao_app/src/auth/components/custom_text_field.dart';
 import 'package:sacolao_app/src/auth/sign_up_screen.dart';
+import 'package:sacolao_app/src/base/base_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -90,7 +91,12 @@ class SignInScreen extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18))),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(builder: (c) {
+                              return const BaseScreen();
+                            }));
+                          },
                           child: const Text(
                             'Entrar',
                             style: TextStyle(fontSize: 18),
