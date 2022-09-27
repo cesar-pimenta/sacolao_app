@@ -1,6 +1,6 @@
 {
-    "name": "sacolao_app",
-    "short_name": "sacolao_app",
+    "name": "greengrocer",
+    "short_name": "greengrocer",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

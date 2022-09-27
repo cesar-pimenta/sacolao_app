@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:sacolao_app/src/auth/sign_in_screen.dart';
+import 'package:get/get.dart';
+import 'package:greengrocer/src/pages/auth/controller/auth_controller.dart';
+import 'package:greengrocer/src/pages_routes/app_pages.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Get.put(AuthController());
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.s
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      title: 'GeeKShop',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.deepPurple,
+        scaffoldBackgroundColor: Colors.white.withAlpha(190),
       ),
       debugShowCheckedModeBanner: false,
-      home: const SignInScreen(),
+      initialRoute: PagesRoutes.splashRoute,
+      getPages: AppPages.pages,
     );
   }
 }
