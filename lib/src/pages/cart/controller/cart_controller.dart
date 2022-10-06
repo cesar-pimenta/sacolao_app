@@ -46,6 +46,7 @@ class CartController extends GetxController {
     CartResult<OrderModel> result = await cartRepository.checkoutCart(
       token: authController.user.token!,
       total: cartTotalPrice(),
+      items: cartItems,
     );
 
     setCheckoutLoading(false);
