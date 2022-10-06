@@ -9,10 +9,13 @@ import 'package:greengrocer/src/pages/cart/repository/cart_repository.dart';
 import 'package:greengrocer/src/pages/common_widgets/payment_dialog.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
 
+import '../../orders/controller/all_orders_controller.dart';
+
 class CartController extends GetxController {
   final cartRepository = CartRepository();
   final authController = Get.find<AuthController>();
   final utilsServices = UtilsServices();
+  final ordersController = Get.find<AllOrdersController>();
 
   List<CartItemModel> cartItems = [];
 
@@ -44,10 +47,9 @@ class CartController extends GetxController {
     setCheckoutLoading(true);
 
     CartResult<OrderModel> result = await cartRepository.checkoutCart(
-      token: authController.user.token!,
-      total: cartTotalPrice(),
-      items: cartItems,
-    );
+        token: authController.user.token!,
+        total: cartTotalPrice(),
+        items: cartItems);
 
     setCheckoutLoading(false);
 
@@ -55,6 +57,8 @@ class CartController extends GetxController {
       success: (order) {
         cartItems.clear();
         update();
+
+        ordersController.setOrder(order);
 
         showDialog(
           context: Get.context!,

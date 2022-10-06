@@ -19,23 +19,13 @@ class AllOrdersController extends GetxController {
   }
 
   Future<void> getAllOrders() async {
-    OrdersResult<List<OrderModel>> result = await ordersRepository.getAllOrders(
-      userId: authController.user.id!,
-      token: authController.user.token!,
-    );
+    allOrders = allOrders
+      ..sort((a, b) => b.createdDateTime!.compareTo(a.createdDateTime!));
 
-    result.when(
-      success: (orders) {
-        allOrders = orders
-          ..sort((a, b) => b.createdDateTime!.compareTo(a.createdDateTime!));
-        update();
-      },
-      error: (message) {
-        utilsServices.showToast(
-          message: message,
-          isError: true,
-        );
-      },
-    );
+    update();
+  }
+
+  setOrder(OrderModel order) {
+    allOrders.add(order);
   }
 }
