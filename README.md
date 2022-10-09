@@ -44,7 +44,7 @@ Tela de cadastro de novo usuário.
 
 Utiliza o container Form do Flutter para criar o formulário com os campos necessários e botão de cadastrar. Cada campo (e-mail, senha, nome, etc.) tem seu próprio validador, e o aplicativo só permite prosseguir ao preencher todos os campos com informações válidas.
 
-Os campos utilizam mascaras (CPF e número de telefone) através do pacote [mask_text_input_formatter](https://pub.dev/packages/mask_text_input_formatter)
+Os campos utilizam máscaras (CPF e número de telefone) através do pacote [mask_text_input_formatter](https://pub.dev/packages/mask_text_input_formatter).
 
 Ao fazer o cadastro, o aplicativo já faz o login e direciona para a página de Home.
 
